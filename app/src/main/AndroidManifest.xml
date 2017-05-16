@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="comh.example.simon.bbm" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/apple"
+        android:label="图书借阅软件"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name=".ui.BookAddActivity"></activity>
+        <activity android:name=".ui.RegisterActivity"></activity>
+        <activity android:name=".ui.MainActivity" android:label="图书"></activity>
+
+        <activity android:name=".ui.LoginActivity"
+                    android:label="图书借阅软件">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.BookQueryActivity"></activity>
+        <activity android:name=".ui.BookUpdateActivity"></activity>
+    </application>
+
+</manifest>
