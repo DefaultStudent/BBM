@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     public static final String CREATE_USERS = "create table users(" + "account integer primary key autoincrement," + "pwd text," + "name text," + "sex text," + "age integer)";
-    public static final String CREATE_BOOKS = "create table Book(" + "bookName text primary key," + "bookType text," + "author text," + "publisher text," + "price text)";
+    public static final String CREATE_BOOKS = "create table book(" + "bookId text primary key," + "bookName text," + "bookType text," + "author text," + "publisher text," + "price text)";
 
     private Context mContext;
 
@@ -31,7 +31,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists users");
-        db.execSQL("drop table if exists Book");
+        db.execSQL("drop table if exists book");
         onCreate(db);
     }
 }

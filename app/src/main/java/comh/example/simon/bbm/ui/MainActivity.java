@@ -38,11 +38,12 @@ import comh.example.simon.bbm.R;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_2);
         setSupportActionBar(toolbar);
 
+        //查询用户名称
         try {
             Intent intent = getIntent();
             String data = intent.getStringExtra("data");
             String data1 = intent.getStringExtra("data1");
-            dbHelper = new MyDatabaseHelper(MainActivity.this, "BBM.db", null, 1);
+            dbHelper = new MyDatabaseHelper(MainActivity.this, "BBM.db", null, 2);
             SQLiteDatabase db = dbHelper.getReadableDatabase();
             Cursor cursor = db.rawQuery("select name from users where pwd=? and account=?", new String[]{data1,data});
             if (cursor.moveToNext()) {
@@ -53,7 +54,7 @@ import comh.example.simon.bbm.R;
             e.printStackTrace();
         }
 
-
+        //初始化侧滑抽屉，并设置响应事件
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
         ActionBar actionBar = getSupportActionBar();
@@ -62,6 +63,7 @@ import comh.example.simon.bbm.R;
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
 
+        //设置抽屉栏的单击响应事件
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -75,11 +77,11 @@ import comh.example.simon.bbm.R;
                         startActivity(intent1);
                         break;
                     case R.id.delete:
-                        Intent intent2 = new Intent(MainActivity.this, RegisterActivity.class);
+                        Intent intent2 = new Intent(MainActivity.this, BookUpdateActivity.class);
                         startActivity(intent2);
                         break;
                     case R.id.update:
-                        Intent intent3 = new Intent(MainActivity.this, RegisterActivity.class);
+                        Intent intent3 = new Intent(MainActivity.this, BookUpdateActivity.class);
                         startActivity(intent3);
                         break;
                     default:
@@ -94,12 +96,12 @@ import comh.example.simon.bbm.R;
         return true;
     }
 
+    //设置顶部菜单选项单击响应事件
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
-
                 break;
             case R.id.backup:
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);

@@ -42,8 +42,6 @@ public class RegisterActivity extends BaseActivity {
                 String sex = sexEdit.getText().toString();
                 String age = ageEdit.getText().toString();
 
-
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
                 ContentValues values = new ContentValues();
 
                 values.put("account", account);
@@ -51,7 +49,7 @@ public class RegisterActivity extends BaseActivity {
                 values.put("name", name);
                 values.put("sex", sex);
                 values.put("age", age);
-                db.insert("users", null, values);
+                dbHelper.getWritableDatabase().insert("users", null, values);
                 Toast.makeText(RegisterActivity.this,"注册成功，请返回登陆界面登陆", Toast.LENGTH_SHORT).show();
             }
         });

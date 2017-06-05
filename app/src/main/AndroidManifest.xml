@@ -14,7 +14,7 @@
         <activity android:name=".ui.MainActivity" android:label="图书"></activity>
 
         <activity android:name=".ui.LoginActivity"
-                    android:label="图书借阅软件">
+            android:label="图书借阅软件">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
